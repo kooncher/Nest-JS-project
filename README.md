@@ -35,8 +35,8 @@ npm run start:mock
 PowerShell:
 
 ```powershell
-$env:PRIVATE_KEY_PATH = "D:\keys\private.pem"
-$env:PUBLIC_KEY_PATH = "D:\keys\public.pem"
+$env:PRIVATE_KEY_PATH = ".\keys\private.pem" # หรือ absolute path
+$env:PUBLIC_KEY_PATH = ".\keys\public.pem"   # หรือ absolute path
 npm run build
 npm start
 ```
@@ -46,6 +46,24 @@ npm start
 ```powershell
 $env:RSA_PRIVATE_KEY = "<BEGIN RSA PRIVATE KEY ... END RSA PRIVATE KEY>"
 $env:RSA_PUBLIC_KEY = "<BEGIN PUBLIC KEY ... END PUBLIC KEY>"
+```
+
+หรือใช้ไฟล์ `.env` (โหลดอัตโนมัติ):
+
+1) คัดลอกเทมเพลต
+```powershell
+Copy-Item .env.sample .env
+```
+2) แก้ค่าที่ต้องการใน `.env` เช่น
+```
+PRIVATE_KEY_PATH=./keys/private.pem
+PUBLIC_KEY_PATH=./keys/public.pem
+# หรือใช้ RSA_PRIVATE_KEY/RSA_PUBLIC_KEY
+```
+3) รัน
+```powershell
+npm run build
+npm start
 ```
 
 ## API Spec
